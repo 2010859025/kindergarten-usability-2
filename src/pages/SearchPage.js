@@ -4,35 +4,23 @@ import {
   MenuItem,
   FormControl,
   Select,
-  FormHelperText,
   OutlinedInput,
   Checkbox,
   ListItemText,
   MobileStepper,
-  CircularProgress,
 } from "@mui/material";
-import { Search, ErrorOutline } from "@mui/icons-material";
+import { ErrorOutline } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { StyledMainButton } from "../components/StyledMainButton";
 import { districts } from "../data/districts";
+import { Link } from "react-router-dom";
 
-const groupSizeOptions = [
-  "S - weniger als 5 Kinder",
-  "M - bis zu 10 Kinder",
-  "L - bis zu 15 Kinder",
-  "XL - mehr als 15 Kinder",
-];
+const groupSizeOptions = ["S", "M", "L", "XL"];
 
-const publicOrPrivateOptions = ["", "Öffentlich", "Privat"];
+const publicOrPrivateOptions = ["", "Ö", "P"];
 
-const openingHoursOptions = [
-  "H - Stundenweise",
-  "VM - Vormittags",
-  "NM - Nachmittags",
-  "GT - Ganztags",
-];
+const openingHoursOptions = ["H", "VM", "NM", "GT"];
 
-const ageGroupsOptions = ["0-2 Jahre", "3-4 Jahre", "5 Jahre"];
+const ageGroupsOptions = ["0-2", "3-4", "5"];
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -47,7 +35,6 @@ const MenuProps = {
 
 function SearchPage({ title }) {
   const navigate = useNavigate();
-  const [showSpinner, setShowSpinner] = useState(false);
   const [showSnackError, setShowSnackError] = useState(false);
 
   const [district, setDistrict] = useState("");
@@ -73,10 +60,7 @@ function SearchPage({ title }) {
       ) {
         setShowSnackError(true);
       } else {
-        setShowSpinner(true);
-
         setTimeout(() => {
-          setShowSpinner(false);
           navigate("/results", {
             state: {
               kiga: {},
@@ -120,12 +104,6 @@ function SearchPage({ title }) {
 
   return (
     <div className="container col">
-      {showSpinner && (
-        <div className="snackbar snackbar-info row snackbar-bottom-search">
-          <CircularProgress size="1rem" sx={{ color: "white" }} />
-          <p className="snackbar-text">Daten laden...</p>
-        </div>
-      )}
       <div className="headline-box col center">
         <MobileStepper
           variant="dots"
@@ -140,7 +118,6 @@ function SearchPage({ title }) {
       </div>
       <div className="input-box">
         <FormControl
-          required
           color="secondary"
           fullWidth
           sx={{ marginBottom: "15px" }}
@@ -163,13 +140,6 @@ function SearchPage({ title }) {
               </MenuItem>
             ))}
           </Select>
-          {districtError ? (
-            <FormHelperText sx={{ color: "red" }}>
-              Bitte Bezirk angeben!
-            </FormHelperText>
-          ) : (
-            ""
-          )}
         </FormControl>
 
         <FormControl color="secondary" fullWidth sx={{ marginBottom: "15px" }}>
@@ -268,24 +238,15 @@ function SearchPage({ title }) {
         <div className="snackbar snackbar-warn row snackbar-bottom-search">
           <ErrorOutline />
           <div className="col">
-            <p className="snackbar-text">Zu viele Ergebnisse.</p>
-            <p className="snackbar-text">Bitte Suche einschränken!</p>
+            <p className="snackbar-text">Error in Java compiler</p>
+            <p className="snackbar-text">java.lang.StockOverflowError</p>
           </div>
         </div>
       )}
       <div className="col center">
-        <StyledMainButton
-          startIcon={<Search />}
-          variant="contained"
-          disabled={showSpinner || showSnackError}
-          className="btn__start"
-          sx={{
-            marginBottom: "100px",
-          }}
-          onClick={startSearch}
-        >
+        <Link className="nav-link-black" onClick={startSearch}>
           Suche starten
-        </StyledMainButton>
+        </Link>
       </div>
     </div>
   );

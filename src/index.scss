@@ -40,7 +40,8 @@ h5 {
   height: 56px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  // justify-content: space-between;
+  justify-content: center;
   width: 100vw;
 }
 
@@ -369,7 +370,20 @@ Note: Beware of modifying this element as it can break the animations - you shou
   }
 }
 
-.nav-link {
+.nav-link-white {
   text-transform: uppercase;
   color: white;
+}
+
+.nav-link-black {
+  color: black;
+  margin-top: 25px;
+  margin-bottom: 80px;
+
+  &-card {
+    color: black;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
 }

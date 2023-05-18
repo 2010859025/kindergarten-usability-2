@@ -3,13 +3,13 @@ import {
   BubbleChart,
   ChildCare,
   LocationOn,
-  Loupe,
   Map,
   Public,
 } from "@mui/icons-material";
-import { Paper, Button } from "@mui/material";
+import { Paper } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { joinAbbreviations } from "../utils/utils";
+import { Link } from "react-router-dom";
 
 function KindergartenShow({ kiga, index, state }) {
   const navigate = useNavigate();
@@ -88,15 +88,9 @@ function KindergartenShow({ kiga, index, state }) {
           </div>
         </div>
       </div>
-      <Button
-        variant="contained"
-        className="result-button"
-        startIcon={<Loupe />}
-        sx={{ position: "absolute", bottom: "15px", right: "15px" }}
-        onClick={showDetails}
-      >
+      <Link className="nav-link-black-card" onClick={showDetails}>
         Details
-      </Button>
+      </Link>
     </Paper>
   );
 }

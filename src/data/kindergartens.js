@@ -7,7 +7,7 @@ export const kindergartens = [
     openingHours: ["H", "VM", "NM", "GT"],
     groupSizes: ["S", "M"],
     ageGroups: ["0-2", "3-4", "5"],
-    publicOrPrivate: "Öffentlich",
+    publicOrPrivate: "Ö",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export const kindergartens = [
     openingHours: ["VM", "NM"],
     groupSizes: ["M", "L"],
     ageGroups: ["3-4", "5"],
-    publicOrPrivate: "Öffentlich",
+    publicOrPrivate: "Ö",
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ export const kindergartens = [
     openingHours: ["H", "VM", "NM"],
     groupSizes: ["S", "M"],
     ageGroups: ["0-2", "3-4", "5"],
-    publicOrPrivate: "Öffentlich",
+    publicOrPrivate: "Ö",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ export const kindergartens = [
     openingHours: ["H", "VM", "NM", "GT"],
     groupSizes: ["S", "M"],
     ageGroups: ["0-2", "3-4", "5"],
-    publicOrPrivate: "Privat",
+    publicOrPrivate: "P",
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ export const kindergartens = [
     openingHours: ["H", "VM", "NM"],
     groupSizes: ["S", "M"],
     ageGroups: ["0-2", "3-4", "5"],
-    publicOrPrivate: "Öffentlich",
+    publicOrPrivate: "Ö",
   },
   {
     id: 6,
@@ -57,7 +57,7 @@ export const kindergartens = [
     openingHours: ["H"],
     groupSizes: ["S"],
     ageGroups: ["0-2"],
-    publicOrPrivate: "Privat",
+    publicOrPrivate: "P",
   },
   {
     id: 7,
@@ -67,6 +67,6 @@ export const kindergartens = [
     openingHours: ["H", "VM", "NM"],
     groupSizes: ["S", "M"],
     ageGroups: ["0-2", "3-4", "5"],
-    publicOrPrivate: "Öffentlich",
+    publicOrPrivate: "Ö",
   },
 ];

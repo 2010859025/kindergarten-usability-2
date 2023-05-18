@@ -28,7 +28,7 @@ const theme = createTheme({
       main: blue,
     },
     error: {
-      main: red,
+      main: "#rgba(0, 0, 0, 0.6)",
     },
   },
   typography: {

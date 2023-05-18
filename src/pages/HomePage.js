@@ -25,7 +25,7 @@ function LandingPage() {
         style={{ width: "300px" }}
       ></img>
       <br />
-      <Link className="nav-link" onClick={handleClick}>
+      <Link className="nav-link-white" onClick={handleClick}>
         Zur Kindergartensuche
       </Link>
     </div>

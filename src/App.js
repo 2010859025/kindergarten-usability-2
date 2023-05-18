@@ -1,7 +1,6 @@
 import theme from "./styles/theme";
 import { ThemeProvider } from "@mui/material/styles";
 import { Routes, Route, useLocation } from "react-router-dom";
-import ReactBurgerMenu from "./components/ReactBurgerMenu";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import InformationPage from "./pages/InformationPage";
@@ -53,11 +52,6 @@ function App() {
   const [pageTitle, setPageTitle] = useState("404 Not found");
   const [documentTitle, setDocumentTitle] = useState("404 Not found");
   const location = useLocation();
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenuChange = () => {
-    setIsOpen(!isOpen);
-  };
 
   useEffect(() => {
     if (Object.keys(titles).indexOf(location.pathname) !== -1) {
@@ -78,12 +72,6 @@ function App() {
       <div id="outer-container">
         {!showLandingPage ? (
           <>
-            <ReactBurgerMenu
-              outerContainerId={"outer-container"}
-              pageWrapId={"page-wrap"}
-              isOpen={isOpen}
-              toggleMenuChange={toggleMenuChange}
-            />
             <Header title={pageTitle} />
           </>
         ) : (

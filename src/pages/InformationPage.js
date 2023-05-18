@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { RocketLaunch } from "@mui/icons-material";
-import ScrollToTopButton from "../components/ScrollToTopButton";
 import { StyledMainButton } from "../components/StyledMainButton";
 import { Link } from "react-router-dom";
 
@@ -12,7 +11,6 @@ function InformationPage({ title }) {
   return (
     <>
       <div className="container">
-        <ScrollToTopButton />
         <div className="headline-box col center">
           <h3 className="headline">
             Hier findet jede:r den passenden Kindergarten!
@@ -118,15 +116,9 @@ function InformationPage({ title }) {
           oder vegane Ernährung? Achte auf die entsprechenden Tags!
         </p>
         <div className="col center">
-          <StyledMainButton
-            startIcon={<RocketLaunch />}
-            variant="contained"
-            sx={{
-              marginBottom: "100px",
-            }}
-          >
-            <Link to="/search">Los geht's!</Link>
-          </StyledMainButton>
+          <Link className="nav-link-black" to="/search">
+            Los geht's!
+          </Link>
         </div>
       </div>
     </>
