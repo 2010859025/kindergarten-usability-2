@@ -90,8 +90,7 @@ function InquiryPage({ title }) {
         <div className="snackbar snackbar-warn row snackbar-bottom-search">
           <ErrorOutline />
           <div className="col">
-            <p className="snackbar-text">Error in Java compiler</p>
-            <p className="snackbar-text">java.lang.StockOverflowError</p>
+            <p className="snackbar-text">Error!</p>
           </div>
         </div>
       )}
@@ -99,10 +98,8 @@ function InquiryPage({ title }) {
         <div className="snackbar snackbar-warn row snackbar-bottom-search">
           <ErrorOutline />
           <div className="col">
-            <p className="snackbar-text">Technischer Fehler.</p>
-            <p className="snackbar-text">
-              Bitte versuchen Sie Ihre Anfrage nochmals abzuschicken!
-            </p>
+            <p className="snackbar-text">Error!</p>
+            <p className="snackbar-text">Network connection lost!</p>
           </div>
         </div>
       )}
