@@ -79,7 +79,20 @@ function InquiryPage({ title }) {
       if (initialError === 1) {
         navigate("/success");
       }
-    } else {
+    }
+
+    if (
+      firstName !== "" ||
+      lastName !== "" ||
+      phoneNumber !== "" ||
+      !isPhoneNumber(phoneNumber) ||
+      mailAddress !== "" ||
+      !isMailAddress(mailAddress) ||
+      childFirstName !== "" ||
+      childLastName !== "" ||
+      childAge !== "" ||
+      !isNumber(childAge)
+    ) {
       setShowSnackError(true);
     }
   };
