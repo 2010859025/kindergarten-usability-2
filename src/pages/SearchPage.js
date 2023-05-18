@@ -50,13 +50,7 @@ function SearchPage({ title }) {
   const startSearch = (e) => {
     e.preventDefault();
     setDistrictError(district === "" ? true : false);
-    if (
-      district === "" &&
-      allOpeningHours.length === 0 &&
-      allGroupSizes.length === 0 &&
-      allAgeGroups.length === 0 &&
-      publicOrPrivate === ""
-    ) {
+    if (district === "") {
       setShowError(true);
     }
     if (district !== "") {
