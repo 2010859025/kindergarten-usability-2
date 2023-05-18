@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   InputLabel,
   MenuItem,
@@ -9,9 +10,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import { ErrorOutline } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
 import { districts } from "../data/districts";
-import { Link } from "react-router-dom";
 
 const groupSizeOptions = ["S", "M", "L", "XL"];
 

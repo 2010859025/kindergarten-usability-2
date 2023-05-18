@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { MobileStepper } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import { kindergartens } from "../data/kindergartens";
 import KindergartenShow from "../components/KindergartenShow";

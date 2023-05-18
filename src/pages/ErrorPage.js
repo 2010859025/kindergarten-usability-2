@@ -1,7 +1,10 @@
+import { SentimentVeryDissatisfied } from "@mui/icons-material";
+
 function ErrorPage() {
   return (
-    <div>
-      <h1>404 Not found</h1>
+    <div className="not-found col vert-center">
+      <SentimentVeryDissatisfied sx={{ fontSize: "80px" }} />
+      <p>Page not found</p>
     </div>
   );
 }

@@ -1,6 +1,4 @@
 import { useEffect } from "react";
-import { RocketLaunch } from "@mui/icons-material";
-import { StyledMainButton } from "../components/StyledMainButton";
 import { Link } from "react-router-dom";
 
 function InformationPage({ title }) {

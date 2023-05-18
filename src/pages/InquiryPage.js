@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { TextField, FormControl } from "@mui/material";
-
-import { useLocation, useNavigate } from "react-router-dom";
 import { ErrorOutline } from "@mui/icons-material";
 import { isMailAddress, isNumber, isPhoneNumber } from "../utils/utils";
-import { Link } from "react-router-dom";
 
 function InquiryPage({ title }) {
   const navigate = useNavigate();
@@ -24,7 +22,7 @@ function InquiryPage({ title }) {
 
   const handleBackClick = (e) => {
     e.preventDefault();
-    navigate("/details", {
+    navigate("/results", {
       state,
     });
   };
@@ -237,7 +235,7 @@ function InquiryPage({ title }) {
 
           <h3 className="bottomline">Nochmal Details checken?</h3>
           <Link className="nav-link-black" onClick={handleBackClick}>
-            Zurück zu den Details
+            Zurück zu Suchergebnissen
           </Link>
         </div>
       </div>

@@ -1,14 +1,13 @@
-import theme from "./styles/theme";
 import { ThemeProvider } from "@mui/material/styles";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import theme from "./styles/theme";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import InformationPage from "./pages/InformationPage";
 import SearchPage from "./pages/SearchPage";
 import ErrorPage from "./pages/ErrorPage";
 import ResultsPage from "./pages/ResultsPage";
-import DetailPage from "./pages/DetailPage";
-import { useEffect, useState } from "react";
 import InquiryPage from "./pages/InquiryPage";
 import SuccessPage from "./pages/SuccessPage";
 
@@ -32,10 +31,6 @@ const titles = {
   "/results": {
     header: "Suchergebnisse",
     document: "Kindergartenwahl: Suchergebnisse",
-  },
-  "/details": {
-    header: "Details",
-    document: "Kindergartenwahl: Details",
   },
   "/inquiry": {
     header: "Anfrage senden",
@@ -92,10 +87,6 @@ function App() {
             <Route
               path="/results"
               element={<ResultsPage title={documentTitle} />}
-            />
-            <Route
-              path="/details"
-              element={<DetailPage title={documentTitle} />}
             />
             <Route
               path="/inquiry"
