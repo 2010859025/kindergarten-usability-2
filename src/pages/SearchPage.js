@@ -34,7 +34,8 @@ const MenuProps = {
 
 function SearchPage({ title }) {
   const navigate = useNavigate();
-  const [showSnackError, setShowSnackError] = useState(false);
+  const [showStackOverflowError, setShowStackOverflowError] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const [district, setDistrict] = useState("");
   const [districtError, setDistrictError] = useState(false);
@@ -50,6 +51,15 @@ function SearchPage({ title }) {
   const startSearch = (e) => {
     e.preventDefault();
     setDistrictError(district === "" ? true : false);
+    if (
+      district === "" &&
+      allOpeningHours.length === 0 &&
+      allGroupSizes.length === 0 &&
+      allAgeGroups.length === 0 &&
+      publicOrPrivate === ""
+    ) {
+      setShowError(true);
+    }
     if (district !== "") {
       if (
         allOpeningHours.length === 0 &&
@@ -57,7 +67,7 @@ function SearchPage({ title }) {
         allAgeGroups.length === 0 &&
         publicOrPrivate === ""
       ) {
-        setShowSnackError(true);
+        setShowStackOverflowError(true);
       } else {
         setTimeout(() => {
           navigate("/results", {
@@ -78,7 +88,8 @@ function SearchPage({ title }) {
   };
 
   const handleOpeningHoursChange = (event) => {
-    setShowSnackError(false);
+    setShowStackOverflowError(false);
+    setShowError(false);
     const {
       target: { value },
     } = event;
@@ -86,7 +97,8 @@ function SearchPage({ title }) {
   };
 
   const handleAgeGroupsChange = (event) => {
-    setShowSnackError(false);
+    setShowStackOverflowError(false);
+    setShowError(false);
     const {
       target: { value },
     } = event;
@@ -94,7 +106,8 @@ function SearchPage({ title }) {
   };
 
   const handleGroupSizeChange = (event) => {
-    setShowSnackError(false);
+    setShowStackOverflowError(false);
+    setShowError(false);
     const {
       target: { value },
     } = event;
@@ -103,12 +116,20 @@ function SearchPage({ title }) {
 
   return (
     <div className="container col">
-      {showSnackError && (
+      {showStackOverflowError && (
         <div className="snackbar snackbar-warn row snackbar-bottom-search">
           <ErrorOutline />
           <div className="col">
             <p className="snackbar-text">Error in Java compiler</p>
             <p className="snackbar-text">java.lang.StockOverflowError</p>
+          </div>
+        </div>
+      )}
+      {showError && (
+        <div className="snackbar snackbar-warn row snackbar-bottom-search">
+          <ErrorOutline />
+          <div className="col">
+            <p className="snackbar-text">Fehler!</p>
           </div>
         </div>
       )}
@@ -129,7 +150,8 @@ function SearchPage({ title }) {
             value={district}
             label="Bezirk"
             onChange={(e) => {
-              setShowSnackError(false);
+              setShowStackOverflowError(false);
+              setShowError(false);
               setDistrict(e.target.value);
             }}
           >
@@ -221,7 +243,8 @@ function SearchPage({ title }) {
             value={publicOrPrivate}
             label="Öffentlich / Privat"
             onChange={(e) => {
-              setShowSnackError(false);
+              setShowStackOverflowError(false);
+              setShowError(false);
               setPublicOrPrivate(e.target.value);
             }}
           >
