@@ -7,7 +7,6 @@ import {
   OutlinedInput,
   Checkbox,
   ListItemText,
-  MobileStepper,
 } from "@mui/material";
 import { ErrorOutline } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
@@ -104,16 +103,16 @@ function SearchPage({ title }) {
 
   return (
     <div className="container col">
+      {showSnackError && (
+        <div className="snackbar snackbar-warn row snackbar-bottom-search">
+          <ErrorOutline />
+          <div className="col">
+            <p className="snackbar-text">Error in Java compiler</p>
+            <p className="snackbar-text">java.lang.StockOverflowError</p>
+          </div>
+        </div>
+      )}
       <div className="headline-box col center">
-        <MobileStepper
-          variant="dots"
-          steps={5}
-          activeStep={0}
-          position="static"
-          backButton={null}
-          nextButton={null}
-          sx={{ marginBottom: "10px" }}
-        />
         <h3 className="headline">Nenne uns zunächst deine Suchkriterien...</h3>
       </div>
       <div className="input-box">
@@ -234,15 +233,6 @@ function SearchPage({ title }) {
           </Select>
         </FormControl>
       </div>
-      {showSnackError && (
-        <div className="snackbar snackbar-warn row snackbar-bottom-search">
-          <ErrorOutline />
-          <div className="col">
-            <p className="snackbar-text">Error in Java compiler</p>
-            <p className="snackbar-text">java.lang.StockOverflowError</p>
-          </div>
-        </div>
-      )}
       <div className="col center">
         <Link className="nav-link-black" onClick={startSearch}>
           Suche starten

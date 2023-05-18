@@ -1,20 +1,15 @@
 import { useState, useEffect } from "react";
-import {
-  TextField,
-  MobileStepper,
-  FormHelperText,
-  FormControl,
-} from "@mui/material";
-import { StyledBackButton } from "../components/StyledBackButton";
-import { StyledMainButton } from "../components/StyledMainButton";
-import ScrollToTopButton from "../components/ScrollToTopButton";
+import { TextField, FormControl } from "@mui/material";
+
 import { useLocation, useNavigate } from "react-router-dom";
-import { ArrowBack, ArrowForward, ErrorOutline } from "@mui/icons-material";
+import { ErrorOutline } from "@mui/icons-material";
 import { isMailAddress, isNumber, isPhoneNumber } from "../utils/utils";
+import { Link } from "react-router-dom";
 
 function InquiryPage({ title }) {
   const navigate = useNavigate();
   const { pathname, state } = useLocation();
+  const [showSnackError, setShowSnackError] = useState(false);
   const [initialError, setInitialError] = useState(0);
 
   useEffect(() => {
@@ -42,15 +37,9 @@ function InquiryPage({ title }) {
 
   const [phoneNumber, setPhoneNumber] = useState("");
   const [phoneNumberError, setPhoneNumberError] = useState(false);
-  const [phoneNumberErrorMessage, setPhoneNumberErrorMessage] = useState(
-    "Bitte Telefonnummer angeben!"
-  );
 
   const [mailAddress, setMailAddress] = useState("");
   const [mailAddressError, setMailAddressError] = useState(false);
-  const [mailAddressErrorMessage, setMailAddressErrorMessage] = useState(
-    "Bitte E-Mail-Adresse angeben!"
-  );
 
   const [childFirstName, setChildFirstName] = useState("");
   const [childFirstNameError, setChildFirstNameError] = useState(false);
@@ -60,9 +49,6 @@ function InquiryPage({ title }) {
 
   const [childAge, setChildAge] = useState("");
   const [childAgeError, setChildAgeError] = useState(false);
-  const [childAgeErrorMessage, setChildAgeErrorMessage] = useState(
-    "Bitte Alter angeben!"
-  );
 
   const sendInquiry = (e) => {
     e.preventDefault();
@@ -71,21 +57,12 @@ function InquiryPage({ title }) {
     setPhoneNumberError(
       phoneNumber === "" || !isPhoneNumber(phoneNumber) ? true : false
     );
-    phoneNumber !== "" &&
-      !isPhoneNumber(phoneNumber) &&
-      setPhoneNumberErrorMessage("Ungültiges Format!");
     setMailAddressError(
       mailAddress === "" || !isMailAddress(mailAddress) ? true : false
     );
-    mailAddress !== "" &&
-      !isMailAddress(mailAddress) &&
-      setMailAddressErrorMessage("Ungültiges Format!");
     setChildFirstNameError(childFirstName === "" ? true : false);
     setChildLastNameError(childLastName === "" ? true : false);
     setChildAgeError(childAge === "" || !isNumber(childAge) ? true : false);
-    childAge !== "" &&
-      !isNumber(childAge) &&
-      setChildAgeErrorMessage("Ungültiges Format!");
 
     if (
       firstName !== "" &&
@@ -104,12 +81,22 @@ function InquiryPage({ title }) {
       if (initialError === 1) {
         navigate("/success");
       }
+    } else {
+      setShowSnackError(true);
     }
   };
 
   return (
     <div className="container col">
-      <ScrollToTopButton />
+      {showSnackError && (
+        <div className="snackbar snackbar-warn row snackbar-bottom-search">
+          <ErrorOutline />
+          <div className="col">
+            <p className="snackbar-text">Error in Java compiler</p>
+            <p className="snackbar-text">java.lang.StockOverflowError</p>
+          </div>
+        </div>
+      )}
       {initialError === 1 && (
         <div className="snackbar snackbar-warn row snackbar-bottom-search">
           <ErrorOutline />
@@ -122,162 +109,117 @@ function InquiryPage({ title }) {
         </div>
       )}
       <div className="headline-box col center">
-        <MobileStepper
-          variant="dots"
-          steps={5}
-          activeStep={3}
-          position="static"
-          backButton={null}
-          nextButton={null}
-          sx={{ marginBottom: "10px" }}
-        />
         <h3 className="headline">Daten zu deiner Person:</h3>
       </div>
       <div className="input-box">
         <FormControl fullWidth sx={{ marginBottom: "15px" }}>
           <TextField
-            required
             color="secondary"
             id="firstName"
             label="Vorname"
             variant="outlined"
             placeholder="Erika"
-            onChange={(e) => setFirstName(e.target.value)}
+            onChange={(e) => {
+              setShowSnackError(false);
+              setFirstName(e.target.value);
+            }}
             error={firstNameError}
           />
-          {firstNameError ? (
-            <FormHelperText sx={{ color: "red" }}>
-              Bitte Vornamen angeben!
-            </FormHelperText>
-          ) : (
-            ""
-          )}
         </FormControl>
         <FormControl fullWidth sx={{ marginBottom: "15px" }}>
           <TextField
             fullWidth
-            required
             color="secondary"
             id="lastName"
             label="Nachname"
             variant="outlined"
             placeholder="Musterfrau"
-            onChange={(e) => setLastName(e.target.value)}
+            onChange={(e) => {
+              setShowSnackError(false);
+              setLastName(e.target.value);
+            }}
             error={lastNameError}
           />
-          {lastNameError ? (
-            <FormHelperText sx={{ color: "red" }}>
-              Bitte Nachnamen angeben!
-            </FormHelperText>
-          ) : (
-            ""
-          )}
         </FormControl>
         <FormControl fullWidth sx={{ marginBottom: "15px" }}>
           <TextField
             fullWidth
-            required
             color="secondary"
             id="phoneNumber"
             label="Telefonnummer"
             variant="outlined"
             placeholder="0664 12345678"
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            onChange={(e) => {
+              setShowSnackError(false);
+              setPhoneNumber(e.target.value);
+            }}
             error={phoneNumberError}
           />
-          {phoneNumberError ? (
-            <FormHelperText sx={{ color: "red" }}>
-              {phoneNumberErrorMessage}
-            </FormHelperText>
-          ) : (
-            ""
-          )}
         </FormControl>
         <FormControl fullWidth sx={{ marginBottom: "15px" }}>
           <TextField
             fullWidth
-            required
             color="secondary"
             id="mailAddress"
             label="E-Mail"
             variant="outlined"
             placeholder="erika.mustermann@mail.com"
-            onChange={(e) => setMailAddress(e.target.value)}
+            onChange={(e) => {
+              setShowSnackError(false);
+              setMailAddress(e.target.value);
+            }}
             error={mailAddressError}
           />
-          {mailAddressError ? (
-            <FormHelperText sx={{ color: "red" }}>
-              {mailAddressErrorMessage}
-            </FormHelperText>
-          ) : (
-            ""
-          )}
         </FormControl>
       </div>
-      <div className="col center">
-        <h3 className="bottomline">Daten zu deinem Kind:</h3>
+      <div className="headline-box col center">
+        <h3 className="headline">Daten zu deinem Kind:</h3>
       </div>
       <div className="input-box">
         <FormControl fullWidth sx={{ marginBottom: "15px" }}>
           <TextField
             fullWidth
-            required
             color="secondary"
             id="childFirstName"
             label="Vorname"
             variant="outlined"
             placeholder="Max"
-            onChange={(e) => setChildFirstName(e.target.value)}
+            onChange={(e) => {
+              setShowSnackError(false);
+              setChildFirstName(e.target.value);
+            }}
             error={childFirstNameError}
           />
-          {childFirstNameError ? (
-            <FormHelperText sx={{ color: "red" }}>
-              Bitte Vornamen angeben!
-            </FormHelperText>
-          ) : (
-            ""
-          )}
         </FormControl>
         <FormControl fullWidth sx={{ marginBottom: "15px" }}>
           <TextField
             fullWidth
-            required
             color="secondary"
             id="childLastName"
             label="Nachname"
             variant="outlined"
             placeholder="Mustermann"
-            onChange={(e) => setChildLastName(e.target.value)}
+            onChange={(e) => {
+              setShowSnackError(false);
+              setChildLastName(e.target.value);
+            }}
             error={childLastNameError}
           />
-          {childLastNameError ? (
-            <FormHelperText sx={{ color: "red" }}>
-              Bitte Nachnamen angeben!
-            </FormHelperText>
-          ) : (
-            ""
-          )}
         </FormControl>
         <FormControl fullWidth sx={{ marginBottom: "15px" }}>
           <TextField
             fullWidth
-            required
             color="secondary"
             id="childAge"
             label="Alter"
             variant="outlined"
             placeholder="3"
-            onChange={(e) => setChildAge(e.target.value)}
+            onChange={(e) => {
+              setShowSnackError(false);
+              setChildAge(e.target.value);
+            }}
             error={childAgeError}
           />
-          {childAgeError ? (
-            <FormHelperText sx={{ color: "red" }}>
-              {isNumber(childAge)}
-              {childAgeErrorMessage}
-            </FormHelperText>
-          ) : (
-            ""
-          )}
         </FormControl>
       </div>
       <div className="input-box">
@@ -289,31 +231,14 @@ function InquiryPage({ title }) {
           placeholder="Verfasse hier deine Nachricht..."
         />
         <div className="col center">
-          <StyledMainButton
-            startIcon={<ArrowForward />}
-            variant="contained"
-            sx={{
-              marginBottom: "25px",
-            }}
-            onClick={sendInquiry}
-          >
+          <Link className="nav-link-black-top" onClick={sendInquiry}>
             Anfrage absenden
-          </StyledMainButton>
+          </Link>
 
           <h3 className="bottomline">Nochmal Details checken?</h3>
-          <StyledBackButton
-            startIcon={<ArrowBack />}
-            variant="contained"
-            className="btn__start"
-            sx={{
-              width: 250,
-              marginTop: "24px",
-              marginBottom: "100px",
-            }}
-            onClick={handleBackClick}
-          >
+          <Link className="nav-link-black" onClick={handleBackClick}>
             Zurück zu den Details
-          </StyledBackButton>
+          </Link>
         </div>
       </div>
     </div>

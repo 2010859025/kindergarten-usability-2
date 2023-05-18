@@ -1,10 +1,8 @@
 import { useEffect } from "react";
-import { StyledBackButton } from "../components/StyledBackButton";
 import { StyledMainButton } from "../components/StyledMainButton";
-import { Paper, MobileStepper, LinearProgress, Chip } from "@mui/material";
+import { Paper } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
-  ArrowBack,
   Send,
   AccessTime,
   BubbleChart,
@@ -13,8 +11,8 @@ import {
   Map,
   Public,
 } from "@mui/icons-material";
-import ScrollToTopButton from "../components/ScrollToTopButton";
 import { joinAbbreviations } from "../utils/utils";
+import { Link } from "react-router-dom";
 
 function DetailPage({ title }) {
   const { pathname, state } = useLocation();
@@ -67,17 +65,7 @@ function DetailPage({ title }) {
 
   return (
     <div className="container col">
-      <ScrollToTopButton />
       <div className="headline-box col center">
-        <MobileStepper
-          variant="dots"
-          steps={5}
-          activeStep={2}
-          position="static"
-          backButton={null}
-          nextButton={null}
-          sx={{ marginBottom: "10px" }}
-        />
         <h3 className="headline">Hier findest du die Einzelheiten</h3>
       </div>
       <div>
@@ -132,51 +120,6 @@ function DetailPage({ title }) {
               </div>
             </div>
             <p className="availability">{availabilityRate}% Auslastung</p>
-            <LinearProgress
-              variant="determinate"
-              value={availabilityRate}
-              sx={{
-                height: "10px",
-                borderRadius: "5px",
-                backgroundColor: "#EEEEEE",
-              }}
-            />
-            <div className="row chip-box">
-              <div className="col chip-box-col">
-                <Chip
-                  label="LGBTIQ+"
-                  color="primary"
-                  style={{ width: "117px" }}
-                />
-                <Chip
-                  label="Glutenfrei"
-                  color="primary"
-                  style={{ width: "117px" }}
-                />
-                <Chip
-                  label="Ausflüge"
-                  color="primary"
-                  style={{ width: "117px" }}
-                />
-              </div>
-              <div className="col chip-box-col">
-                <Chip
-                  label="Vegetarisch"
-                  color="primary"
-                  style={{ width: "117px" }}
-                />
-                <Chip
-                  label="Garten"
-                  color="primary"
-                  style={{ width: "117px" }}
-                />
-                <Chip
-                  label="Ganztags"
-                  color="primary"
-                  style={{ width: "117px" }}
-                />
-              </div>
-            </div>
             <div className="kiga-text">
               {" "}
               Hallo!
@@ -226,30 +169,14 @@ function DetailPage({ title }) {
         </Paper>
       </div>
       <div className="col center">
-        <StyledMainButton
-          startIcon={<Send />}
-          variant="contained"
-          sx={{
-            marginBottom: "25px",
-          }}
-          onClick={handleInquiryClick}
-        >
+        <Link className="nav-link-black-top" onClick={handleInquiryClick}>
           Anfrage schicken
-        </StyledMainButton>
+        </Link>
 
         <h3 className="bottomline">Andere Kindergärten ansehen?</h3>
-        <StyledBackButton
-          startIcon={<ArrowBack />}
-          variant="contained"
-          sx={{
-            width: 250,
-            marginTop: "24px",
-            marginBottom: "100px",
-          }}
-          onClick={handleBackClick}
-        >
+        <Link className="nav-link-black" onClick={handleBackClick}>
           Zurück zu den Resultaten
-        </StyledBackButton>
+        </Link>
       </div>
     </div>
   );

@@ -19,15 +19,6 @@ function ResultsPage({ title }) {
   return (
     <div className="container col">
       <div className="headline-box col center">
-        <MobileStepper
-          variant="dots"
-          steps={5}
-          activeStep={1}
-          position="static"
-          backButton={null}
-          nextButton={null}
-          sx={{ marginBottom: "10px" }}
-        />
         <h3 className="headline">Wähle den passenden Kindergarten</h3>
       </div>
       {kindergartens.map((kiga, index) => (
