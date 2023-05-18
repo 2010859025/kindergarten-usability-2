@@ -1,0 +1,370 @@
+@use "./styles/fonts";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Roboto;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 400;
+}
+
+#outer-container {
+  height: 100vh;
+  position: relative;
+}
+
+.header {
+  width: 100vw;
+}
+
+.header-menu {
+  background-color: #ffd700;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+}
+
+.header-spacer {
+  width: 24px;
+  margin-right: 14px;
+}
+
+.header-img {
+  height: 120px;
+  background-image: url("../public/images/kindergarten_header.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.landing-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../public/images/kindergarten.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.center {
+  align-items: center;
+  justify-content: center;
+}
+
+.vert-center {
+  align-items: center;
+}
+
+.container {
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+
+  .headline-box {
+    margin-top: 20px;
+
+    .headline {
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+  }
+
+  .paragraph {
+    line-height: 1.5;
+    font-weight: 400;
+    font-size: 16px;
+    overflow-wrap: break-word;
+  }
+
+  .paragraph-headline {
+    line-height: 1.5;
+    font-weight: 500;
+    margin-bottom: 7px;
+  }
+
+  .paragraph-pic {
+    height: 200px;
+
+    &.right {
+      padding-left: 16px;
+      float: right;
+    }
+
+    &.left {
+      padding-right: 16px;
+      float: left;
+    }
+  }
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: absolute;
+  width: 18px;
+  height: 15px;
+  right: 25px;
+  top: 140.5px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #000000;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #222222;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #000;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #fff;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #000;
+  padding: 0.8em;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.menu-item {
+  margin-bottom: 24px;
+}
+
+.btn__up {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #fff;
+  border: 3px solid #343434;
+  border-radius: 40px;
+  width: 40px;
+  height: 40px;
+  color: #343434;
+  z-index: 1;
+}
+
+.input-box {
+  margin: auto;
+  width: 250px;
+}
+
+.result-container {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.box {
+  padding: 16px;
+}
+
+.result-pic {
+  width: 150px;
+}
+
+.result-headline {
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 16px 0;
+}
+
+.result-icon {
+  margin-right: 7px;
+}
+
+.bottomline {
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.availability {
+  font-weight: 500;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.chip-box {
+  margin-top: 25px;
+  justify-content: space-around;
+}
+
+.chip-box-col {
+  gap: 15px;
+}
+
+.kiga-text {
+  line-height: 1.5;
+  margin-top: 25px;
+}
+
+.privacy {
+  margin: 25px 0;
+}
+
+.success-icon {
+  font-size: 5em;
+  text-align: center;
+}
+
+.success-text {
+  width: 90%;
+  margin-bottom: 20px;
+  line-height: 2;
+}
+
+.search-field {
+  align-items: end;
+  margin-bottom: 30px;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
+.modal {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  width: 400px;
+  max-width: 90%;
+  z-index: 999;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-paragraph {
+  margin-top: 10px;
+}
+
+.modal-headline {
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+
+.modal-title {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.snackbar {
+  position: fixed;
+  background-color: rgba(174, 174, 174, 0.8);
+  border-color: white;
+  padding: 10px 16px;
+  border-radius: 4px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 250px;
+  z-index: 1000;
+  align-items: center;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
+  color: #fff;
+  top: 5%;
+
+  &-info {
+    background-color: #212121;
+  }
+
+  &-warn {
+    background-color: #d32f2f;
+  }
+
+  &-text {
+    margin-left: 12px;
+  }
+}
