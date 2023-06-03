@@ -64,42 +64,35 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div id="outer-container">
-        {!showLandingPage ? (
-          <>
-            <Header title={pageTitle} />
-          </>
-        ) : (
-          ""
-        )}
-        <div id="page-wrap">
-          <Routes>
-            <Route path="/" element={<HomePage title={documentTitle} />} />
-            <Route path="/home" element={<HomePage title={documentTitle} />} />
-            <Route
-              path="/information"
-              element={<InformationPage title={documentTitle} />}
-            />
-            <Route
-              path="/search"
-              element={<SearchPage title={documentTitle} />}
-            />
-            <Route
-              path="/results"
-              element={<ResultsPage title={documentTitle} />}
-            />
-            <Route
-              path="/inquiry"
-              element={<InquiryPage title={documentTitle} />}
-            />
-            <Route
-              path="/success"
-              element={<SuccessPage title={documentTitle} />}
-            />
-            <Route path="*" element={<ErrorPage title="404 Not found" />} />
-          </Routes>
-        </div>
-      </div>
+      {!showLandingPage ? (
+        <>
+          <Header title={pageTitle} />
+        </>
+      ) : (
+        ""
+      )}
+      <Routes>
+        <Route path="/" element={<HomePage title={documentTitle} />} />
+        <Route path="/home" element={<HomePage title={documentTitle} />} />
+        <Route
+          path="/information"
+          element={<InformationPage title={documentTitle} />}
+        />
+        <Route path="/search" element={<SearchPage title={documentTitle} />} />
+        <Route
+          path="/results"
+          element={<ResultsPage title={documentTitle} />}
+        />
+        <Route
+          path="/inquiry"
+          element={<InquiryPage title={documentTitle} />}
+        />
+        <Route
+          path="/success"
+          element={<SuccessPage title={documentTitle} />}
+        />
+        <Route path="*" element={<ErrorPage title="404 Not found" />} />
+      </Routes>
     </ThemeProvider>
   );
 }

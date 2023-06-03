@@ -122,7 +122,7 @@ function SearchPage({ title }) {
         <div className="snackbar snackbar-warn row snackbar-bottom-search">
           <ErrorOutline />
           <div className="col">
-            <p className="snackbar-text">Fehler!</p>
+            <p className="snackbar-text">Error!</p>
           </div>
         </div>
       )}

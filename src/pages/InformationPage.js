@@ -70,17 +70,19 @@ function InformationPage({ title }) {
         />
         <p className="paragraph">
           Die zeitlichen Verfügbarkeiten der hier angebotenen Kindergärten
-          variieren zwischen stundenweisen Angeboten über Vormittags- bzw.
-          Nachmittagsverfügbarkeiten bis hin zu Ganztagesstätten. Somit kannst
-          du den Kindergarten ganz flexibel nach deinem Arbeitsverhältnis
-          wählen.
+          variieren zwischen stundenweisen Angeboten (<b>H</b>) über Vormittags-
+          (<b>VM</b>) bzw. Nachmittagsverfügbarkeiten (<b>NM</b>) bis hin zu
+          Ganztagesstätten (<b>GT</b>). Somit kannst du den Kindergarten ganz
+          flexibel nach deinem Arbeitsverhältnis wählen.
         </p>
         <br />
         <p className="paragraph">
-          Möchtest du dein Kind lieber für eine Gruppe mit ausschließlich
-          gleichaltrigen anmelden oder ziehst du eine Konstellation mit
-          gemischtem Alter vor? Wähle den Kindergarten mit den entsprechenden
-          Tags!
+          Möchtest du dein Kind lieber für eine kleine (<b>S</b>, bis 5 Kinder),
+          mittelgroße (<b>M</b>, 6 bis 10 Kinder), große (<b>L</b>, 11 bis 15
+          Kinder) oder sehr große (<b>XL</b>, 16 bis 20 Kinder) Gruppe mit
+          ausschließlich gleichaltrigen anmelden oder ziehst du eine
+          Konstellation mit gemischtem Alter vor? Wähle den Kindergarten mit den
+          entsprechenden Tags!
         </p>
         <br />
         <p className="paragraph-headline">
